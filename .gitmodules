@@ -1,0 +1,6 @@
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/notherealmarco/WhaleDeployer-frontend.git
+[submodule "telegram"]
+	path = telegram
+	url = https://github.com/notherealmarco/WhaleDeployer-telegram.git
