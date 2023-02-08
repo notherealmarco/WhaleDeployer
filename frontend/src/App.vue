@@ -27,7 +27,7 @@ export default {
 		<v-container class="fill-height">
 			<v-row align-content="center" justify="center" class="fill-height">
 				<router-view></router-view>
-				<div v-if="theme === 'light'" style="color: gray">why would you :/</div>
+				<div v-if="theme === 'light'" style="color: gray">why would you :/ (ALPHA version)</div>
 			</v-row>
 		</v-container>
 	</v-app>
