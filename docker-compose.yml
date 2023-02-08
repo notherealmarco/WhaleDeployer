@@ -6,6 +6,6 @@ services:
     ports:
       - '3333:3000'
     volumes:
-      - '/mnt/cache/SSD:/data'
-      - '/mnt/user/appdata/whaledeployer:/config'
-      - '/var/run/docker.sock:/var/run/docker.sock'
+      - 'whaledeployer_data:/data' # your persistent data directory (for git repositories)
+      - 'whaledeployer_config:/config' # the directory where the database and SSH keys are stored
+      - '/var/run/docker.sock:/var/run/docker.sock' # do not change this line
