@@ -1,19 +1,21 @@
 ## WhaleDeployer
 *a container, to deploy them all!*
 
-WhaleDeployer is a CI/CD tool that automates the deployment process of your Docker applications.
+<img src="https://www.docker.com/wp-content/uploads/2022/03/horizontal-logo-monochromatic-white.png" height="35" />
 
-When a new commit is available on the Git repository, WhaleDeployer will pull the new version of the application, build the Docker image and deploy it on your machine.
+**WhaleDeployer is a CI/CD tool** that automates the deployment process of your **Docker applications**.
 
-Everything can be set up from a web interface, and then you can forget about it.
+When a new **commit** is available on the Git repository, WhaleDeployer will **pull** the new version of the application, **build** the Docker image and **deploy** it on your machine.
+
+Everything can be set up from a **web interface**, and then you can forget about it.
 
 ### Who is it meant for?
 
 WhaleDeployer best suits your needs if:
 
-- You want to automate the deployment process on your machine
-- You build your Docker images on your machine
-- You want to manage SSH deploy keys in a painless way
+- You want to **automate** the deployment process on your machine
+- You **build** your Docker images **on your machine**
+- You want to manage **SSH deploy keys** in a painless way
 - *You want this all to be without any human intervention*
 
 ## To do list
