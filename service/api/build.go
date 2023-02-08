@@ -177,10 +177,21 @@ func (rt *_router) buildComposeProject(w http.ResponseWriter, r *http.Request, p
 
 	}
 
-	cmd := "docker-compose -f " + p.Path + "/docker-compose.yml up --build -d"
+	cmd := "docker-compose -f " + p.Path + "/docker-compose.yml down"
+	fo.Write([]byte("\n\n# " + cmd + "\n"))
+	c := exec.Command("sh", "-c", cmd)
+	c.Stdout = fo
+	err = c.Run()
+
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		fo.Write([]byte("\n\nDocker Compose error: " + err.Error()))
+	}
+
+	cmd = "docker-compose -f " + p.Path + "/docker-compose.yml up --build -d"
 	fo.Write([]byte("\n\n# " + cmd + "\n"))
 
-	c := exec.Command("sh", "-c", cmd)
+	c = exec.Command("sh", "-c", cmd)
 	c.Stdout = fo
 	err = c.Run()
 
