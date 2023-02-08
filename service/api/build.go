@@ -154,7 +154,7 @@ func (rt *_router) buildComposeProject(w http.ResponseWriter, r *http.Request, p
 
 	}
 
-	cmd := "docker compose -f " + p.Path + "/docker-compose.yml up -d"
+	cmd := "docker-compose -f " + p.Path + "/docker-compose.yml up -d"
 	fo.Write([]byte("\n\n# " + cmd + "\n"))
 
 	c := exec.Command("sh", "-c", cmd)
