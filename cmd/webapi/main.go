@@ -149,6 +149,9 @@ func run() error {
 	// Start the service listening for requests in a separate goroutine
 	go func() {
 		logger.Infof("API listening on %s", apiserver.Addr)
+
+		logger.Warn("ALPHA VERSION")
+
 		serverErrors <- apiserver.ListenAndServe()
 		logger.Infof("stopping API server")
 	}()
