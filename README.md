@@ -98,7 +98,7 @@ For now, you can configure an HTTP Basic Auth in your reverse proxy. _You should
 
 ## License notice
 
-This projects uses code from Enrico Bassetti's [Fantastic coffee decaffeinated](https://github.com/sapienzaapps/fantastic-coffee-decaffeinated) project, which is licensed under the below MIT License.
+This projects includes some code from Enrico Bassetti's [Fantastic coffee decaffeinated](https://github.com/sapienzaapps/fantastic-coffee-decaffeinated) project, which is licensed under the below MIT License.
 
 ```text
 MIT License
