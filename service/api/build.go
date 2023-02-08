@@ -63,21 +63,24 @@ func (rt *_router) buildComposeProject(w http.ResponseWriter, r *http.Request, p
 
 		// fix ssh known_hosts
 		exec.Command("sh", "-c", "rm $HOME/.ssh/known_hosts").Output()
-		
+		exec.Command("sh", "-c", "mkdir $HOME/.ssh").Output()
+
 		ssh_host := strings.Split((strings.Split(p.GitURL, "@")[1]), ":")[0]
 
-		cmd := "ssh-keyscan "+ssh_host+" >> $HOME/.ssh/known_hosts"
+		rt.baseLogger.Info("ssh_host: " + ssh_host)
+
+		cmd := "ssh-keyscan " + ssh_host + " >> $HOME/.ssh/known_hosts"
 		fo.Write([]byte("\n\n# " + cmd + "\n"))
 		c := exec.Command("sh", "-c", cmd)
 		c.Stdout = fo
 		err = c.Run()
+		//
 
 		if err != nil {
 			helpers.SendBadRequestError(err, "Error populating known_hosts: "+err.Error(), w, rt.baseLogger)
 			rt.db.BuildFail(p.Name)
 			return
 		}
-
 
 		publicKey, err = ssh.NewPublicKeysFromFile("git", rt.keysPath+"/"+p.Name+"/key", "")
 
