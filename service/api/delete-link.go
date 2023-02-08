@@ -19,8 +19,6 @@ func (rt *_router) deleteProject(w http.ResponseWriter, r *http.Request, ps http
 
 	id := ps.ByName("id")
 
-	// here we should do some validity checks on the input
-
 	err := rt.db.DeleteProject(id)
 
 	if err != nil {

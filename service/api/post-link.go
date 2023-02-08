@@ -27,8 +27,6 @@ func (rt *_router) postProject(w http.ResponseWriter, r *http.Request, ps httpro
 		return
 	}
 
-	// here we should do some validity checks on the input
-
 	if req.DeployKey {
 		// generate the key using openssh
 
@@ -45,7 +43,7 @@ func (rt *_router) postProject(w http.ResponseWriter, r *http.Request, ps httpro
 		_, err = os.Stat(rt.keysPath + "/" + req.Name + "/key")
 
 		if err != nil {
-			_, err = exec.Command("ssh-keygen", "-t", "ed25519", "-C", "deploy@overlinks", "-f", rt.keysPath+"/"+req.Name+"/key", "-N", "").Output()
+			_, err = exec.Command("ssh-keygen", "-t", "ed25519", "-C", "deploy@whaledeployer", "-f", rt.keysPath+"/"+req.Name+"/key", "-N", "").Output()
 
 			if err != nil {
 				helpers.SendBadRequestError(err, "Error generating key: "+err.Error(), w, rt.baseLogger)
