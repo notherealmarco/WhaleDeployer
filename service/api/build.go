@@ -48,6 +48,7 @@ func (rt *_router) buildComposeProject(w http.ResponseWriter, r *http.Request, p
 	defer fo.Close()
 
 	fo.Write([]byte("Project: " + p.Name + "\n\n"))
+	rt.baseLogger.Info("Building project: " + p.Name)
 
 	// git
 
