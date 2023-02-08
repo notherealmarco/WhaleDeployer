@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+	"strings"
 
 	"github.com/julienschmidt/httprouter"
 	"github.com/notherealmarco/WhaleDeployer/service/api/helpers"
@@ -60,6 +61,12 @@ func (rt *_router) buildComposeProject(w http.ResponseWriter, r *http.Request, p
 
 	if p.DeployKey {
 		publicKey, err = ssh.NewPublicKeysFromFile("git", rt.keysPath+"/"+p.Name+"/key", "")
+
+		// fix ssh known_hosts
+
+		exec.Command("sh", "-c", "rm $HOME/.ssh/known_hosts").Output()
+		ssh_host := strings.Split((strings.Split(p.GitURL, "@")[1]), ":")[0]
+		exec.Command("sh", "-c", "ssh-keyscan "+ssh_host+" >> $HOME/.ssh/known_hosts").Output()
 
 		if err != nil {
 			helpers.SendBadRequestError(err, "Error parsing the key: "+err.Error(), w, rt.baseLogger)
